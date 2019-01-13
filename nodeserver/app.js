@@ -42,3 +42,10 @@ app.post('/email_post', function(req, res) {
     res.render('email.ejs',{'email' : req.body.email})
 
 })
+
+app.post('/ajax_send_email', function(req, res) {
+    console.log(req.body.email);
+    // check validation about input value => select DB 
+    var responseData = {'reult':'ok', 'email':req.body.email}
+    res.json(responseData)
+})

@@ -6,5 +6,31 @@
             name : <input type="text" name="name"><br/>
             <input type="submit">
         </form>
+
+        <!-- json 활용한 Ajax 처리 -->
+        <button class="ajaxsendclass">ajaxsend</button>
+
+        <div class="resultclass"></div>
+
+        <script>
+            document.querySelector('.ajaxsendclass').addEventListener('click', function() {
+                var inputdata = document.forms[0].elements[0].value;
+                sendAjax('http://127.0.0.1:3000/ajax_send_email', inputdata);
+            })
+
+            function sendAjax(url, data) {
+                var data = {'email' : data};
+                data = JSON.stringify(data);    //json 객체를 string 형태로 변경해서 보내야함 
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', url);
+                xhr.setRequestHeader('Content-Type', "application/json");
+                xhr.send(data);
+                xhr.addEventListener('load', function() {
+                    // console.log(xhr.responseText);
+                    var result = JSON.parse(xhr.responseText);
+                    document.querySelector(".resultclass").innerHTML = result.email;
+                });
+            }
+        </script>
     </body>
 </html>
