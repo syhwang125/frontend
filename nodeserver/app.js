@@ -1,7 +1,25 @@
 var express = require('express')
 var app = express()
 var bodyParser = require('body-parser')
+var sqlite3 = require('sqlite3').verbose()
+var db = new sqlite3.Database(':memory:')
 
+db.serialize(function() {
+    db.run('CREATE TABLE lorem (info TEXT)') 
+    var stmt = db.prepare('INSERT INTO lorem VALUES (?)')
+
+    for (var i=0; i<10; i++) {
+        stmt.run('Ipsum ' + i)
+    }
+    stmt.finalize()
+
+    // db.each('SELECT email from user', function(err, row) {
+    //     console.log(row.email)
+    db.each('SELECT  info FROM lorem', function (err, row) {
+        console.log(row.info)
+    })
+})
+db.close()
 
 app.listen(3000, function() {
     console.log("Hello nodejs web framework, express !!");
@@ -45,7 +63,24 @@ app.post('/email_post', function(req, res) {
 
 app.post('/ajax_send_email', function(req, res) {
     console.log(req.body.email);
+
+    var email = req.body.email;
+    var responseData = {}; 
+
+    var query = db.each('select name from user where email="' + email + '"', function(err, rows) {
+        if(err) throw err;
+        if(rows[0]) {
+            console.log(rows[0])
+            responseData.result = "ok";
+            responseData.name = rows[0].name;
+        } else {
+            console.log('none : ' + rows[0])
+            responseData.result = "none";
+            responseData.name = "";
+        }
+        res.json(responseData)
+    })
     // check validation about input value => select DB 
-    var responseData = {'reult':'ok', 'email':req.body.email}
-    res.json(responseData)
+    // var responseData = {'reult':'ok', 'email':req.body.email}
+    // res.json(responseData)
 })
