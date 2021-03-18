@@ -34,7 +34,7 @@ class TravelClubStore {
     }
 
     update(newClub) {
-        this.clubMap.set(newClub.name, newClub);
+        this._clubMap.set(newClub.name, newClub);
     }
 
     delete(name) {
@@ -46,6 +46,11 @@ let newClub = new TravelClub('TestClub', 'test club');
 let  travelClubStore = new TravelClubStore();
 travelClubStore.store(newClub);
 travelClubStore.store(new TravelClub('TestClub02', 'test intro02'))
+travelClubStore.store(new TravelClub('TestClub02', 'test intro02'))   //exist() 
+travelClubStore.store(new TravelClub('TestClub03', 'test intro03')) 
+
+travelClubStore.delete('TestClub03');
+travelClubStore.update(new TravelClub('TestClub02', 'update test'));
 
 console.log(travelClubStore.count);
 console.log(travelClubStore.retrieve('TestClub'));
