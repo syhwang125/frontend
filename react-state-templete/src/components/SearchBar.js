@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
-
-import SearchIcon from '@material-ui/core';
-import Search from '@material-ui/icons/Search';
+import SearchIcon from '@material-ui/icons/Search';
+import { TextField , InputAdornment } from '@material-ui/core';
 
 class SearchBar extends Component {
     render() {
-        reaturn (
+
+        const { onSearchTitle } = this.props;
+
+        return (
             <TextField 
-                inputProps={{ 
-                    startAdorment: 
-                    <InputAdorment position='start'>
+                InputProps={{ 
+                    startAdornment: (
+                    <InputAdornment position='start'>
                         <SearchIcon />
-                    </InputAdorment>
+                    </InputAdornment>
+                    )
                 }}
+
+                onChange = { event => onSearchTitle( event.target.value )}
             />
         )
     }
