@@ -4,7 +4,8 @@ import BookListItem from './BookListItem';
 
 class BookList extends Component {
     render() {
-        const books = this.props.books;
+        // const books = this.props.books;
+        const { books } = this.props; 
         const bookItems = books.map( book => {
             return (
                 <ListItem key={book.ISBN}>
@@ -17,8 +18,7 @@ class BookList extends Component {
             <Container maxWidth='sm'>
             <List>
                 {bookItems}
-                
-                
+
                 <ListItem>
                     <BookListItem book={books[0]} />
                     {books[0].title}

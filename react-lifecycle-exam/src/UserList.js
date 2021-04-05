@@ -9,8 +9,11 @@ class UserList extends Component {
 
         this.state = {
             users : [{
-                id : '',
-                name : '',
+                id : '1',
+                name : 'kang',
+            }, {
+                id : '2',
+                name : 'park'
             }]
         }
     }
@@ -31,9 +34,9 @@ class UserList extends Component {
     //     return null; 
     // }
     
-    componentDidMount() {           // 컴포넌트가 마운트된 후 바로 호출됨
-        this.loadUsers();
-    }
+    // componentDidMount() {           // 컴포넌트가 마운트된 후 바로 호출됨
+    //     this.loadUsers();
+    // }
 
     render() {
         const userList = this.state.users.map ( user => {
@@ -43,11 +46,11 @@ class UserList extends Component {
 
         return (
             <div>
-               {/* <Button 
+                <Button 
                     onClick = { this.loadUsers.bind(this) } 
-               variant='contained' color='primary'> Load </Button> */}
+                    variant='contained' color='primary'> Load </Button> 
                 <List>
-                    {userList}
+                    { userList }
                 </List>
             </div>
         )

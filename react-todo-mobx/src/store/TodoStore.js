@@ -1,4 +1,4 @@
-import { observable, action, computed, makeObservable } from 'mobx';
+import { observable, action, computed, makeObservable , toJS} from 'mobx';
 
 class TodoStore {
 
@@ -9,8 +9,16 @@ class TodoStore {
     @observable 
     _todo = {}   // id, title, date 
 
+    @observable
+    _todos = [];
+
     get todo() {
         return this._todo;
+    }
+
+    get todos() {
+        return this._todos ? this._todos.slice() : [];
+        // return toJS(this._todos);
     }
 
     @action
@@ -19,6 +27,11 @@ class TodoStore {
             ...this._todo,
             [name] : value
         }
+    }
+
+    @action 
+    addTodo(todo) {
+        this._todos.push(todo);
     }
 }
 
