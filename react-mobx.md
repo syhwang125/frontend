@@ -23,17 +23,11 @@ Node.js 는 V8엔진 기반의 javascript 실행 환경 제공   (npm포함)
 $npm install -g yarn    // yarn 설치 
 
 $yarn create react-app hello-react        // hello-react 프로젝트 생성
-hello-react$ yarn start                          // hello-react 실행 
-
+  hello-react
+  
+$ yarn start                          // hello-react 실행 
 http://localhost:3000 
 
- 생성 (react-props-exam)
-$yarn create react-app react-props-exam     //project create
-
-$cd /Users/youngminlee/gitrepository/react-props-exam
-$ yarn add @material-ui/core                            // material-ui lib install 
-$yarn
-$yarn start           -> http://localhost:3000/ 
 
 ## 3. React Component 
     컴포넌트는 React UI 구성의 기본 단위
@@ -63,7 +57,7 @@ JSX : 대소문자 구분 (Pascal case 로 작성, ex) <List/> <Button>
        js코드 반영하기 위해서는 {중괄호} 내부로 구분 
 HTML요소 : 소문자로 구분 <h2/>. 
    
-*4.React props 
+## 4.React props 
   props 이해 
   protypes : 상위 컴포넌트로부터 전달받은 props 검증. 대신 typescript를 이용하면 컴파일시 에러 처리 가능 
 
@@ -81,14 +75,56 @@ HTML요소 : 소문자로 구분 <h2/>.
   - Function 기반의 컴포넌트는 상태가 없는 stateless 임 
    
   
-## 4. React Component - props 실습  (simple-counter)
-$yarn create react-app simple-counter
-$yarn add @material-ui/core
+## 4. React Component - props 실습 
+1) props exam 
+ 생성 (react-props-exam).  App - books - BookList -> BookListItem 
+ 
+$yarn create react-app react-props-exam     //project create
+$cd /Users/youngminlee/gitrepository/react-props-exam
+   public/index.html 에서 확인    <div id="root"></div>. 
+   src/index.js 에서 확인 
+       ReactDOM.render(
+            <React.StrictMode>
+               <App />
+            </React.StrictMode>,
+       document.getElementById('root')
+      );
+
+구조문의 할당  var obj = {a:10, b=20} 를 {a,b} = obj; 라고 표현함 
+
+
+$ yarn add @material-ui/core                            // material-ui lib install 
+$ yarn
+$ yarn start           -> http://localhost:3000/ 
+
 
 
 ## 5. React Component - State 이해 및 실습 
 * 1) State 이해 
+   state 초기화는 constructor()에서 정의되며, super();        // super생성자를 호출해야 this를 사용할 수 있음
+   setState()를 통해 state값을 변경할 수 있음 
+   
+    constructor() {
+        super();        // super생성자를 호출해야 this를 사용할 수 있음
+        this.state = {
+            count : 5,      //state value initailize
+        }
+    }
 
+    increment() {
+        this.setState({
+            count : this.state.count + 1,
+        })
+    }
+
+    <Button variant='contained' color='primary' size='large' onClick={this.increment.bind(this)}> + </Button>
+    <Box component='span' m={5}> { this.state.count } </Box>
+
+    예제 simple-counter
+     $yarn create react-app simple-counter
+     $yarn add @material-ui/core
+
+    
 * 2) State 실습
 $cd react-state-template     
 $yarn 				// 설치 
