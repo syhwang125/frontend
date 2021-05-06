@@ -138,35 +138,47 @@ $yarn start
              arrow function의 경우 bind 정의는 불필요   () => {}
              auto-bind라이브러리 활용 autobind(this);
   -componentDidMount() 컴포넌트가 마운트된 직후 호출되며 데이터 로딩 등의 작업   
-  -getDerivedStateFromProps() : 상위컴포넌트로부터 받은 props와  이전props값을 비교. //동기화 
+  -getDerivedStateFromProps() : 상위컴포넌트로부터 받은 props와  이전props값을 비교. 동기화할때 사용
           
 2)Updating 
-  shouldComponentUpdate () : props 이전값과 달라서 렌더링이 필요하면 return true, 불필요하면 false
-  render()
+  shouldComponentUpdate () : props 이전값과 달라서 렌더링이 필요하면 return true, 불필요하면 false (이전props=현재props)
+  getSnapshotBeforeUpdate(): DOM에 변화가 일어나기 직전의 값을 가져와서 비교하기 위해 정의함 
+  render() 
   componentDidUpdate() 
   
 3)UnMounting: 
    ComponentWillUnmount()
    
-json placeholder https://jsonplaceholder.typicode.com/ 
+json placeholder   
+https://jsonplaceholder.typicode.com/    (post user)
+
 $npm install --s axios       // server 와 http 프로토콜 통신 
+
+$react-lifecycle-exam\
 $yarn start 
+
 
 ## 8. Mobx 
 * 1) Mobx- Flux 이해 
 Mobx : React 컴포넌트 상태 관리 컨테이너 
-FLux : 상태관리 컨테이너의 기반
+FLux : 상태관리 컨테이너의 기반 
 
 App Component , Menu Component, SearchbarComponent, List Component, ListItemComponent 각각에서 state 를 관리한다면, 제어가 어려움. 
 Redux 가 상태관리가 있지만, Mobx 를 이용하며 Flux 아키텍처 
 
+* 2)Mobx 구조 
 Flux 아키텍처 : React를 이용한 UI구성에서 데이터의 흐름을 관리하는 어플리케이션 아키텍처임 
-Flux 구조 : Action -> Dispatcher -> Store  -> View -> [ Action ] -> Dispatcher 
+*Flux 구조 : Action -> Dispatcher -> Store  -> View (React component)-> [ Action ] -> Dispatcher 
 Store (view 각각의 state는 store를 이용해 통합 관리, store데이터는 action을 이용해 제어함) 
 
-Mobx, Mobx-react 라이브러리 필요 
-
-* 6-3강.
+Mobx, Mobx-react 라이브러리 필요  (pacakge.json에 rewired )
+"scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject"
+  },
+  
 $react-counter-mobx> yarn 
 $yarn start 
 
@@ -176,7 +188,7 @@ constructor (){
         makeObservable(this);       //mobx5 버전이후 mobx6에서는 반드시 정의해야, 데이터 변경시 반영됨. 
  }
 
-* 6-4강.
+* 3) 데코레이션 
 @action : 관찰대상 데이터, 즉 observable state 의 값을 변경하는 메소드에 적용
 @computed : 성능때문에 사용. get 메소드에 일반적으로 적용하거나 model 객체간 전환 시점에 적용함 
                         관찰가능한 데이터를 연산하는 get 메소드에서 사용함. 캐슁됨. 
@@ -190,8 +202,7 @@ constructor (){
 TodoListComponent (@observer).  -> action call -> TodoListStore(@observable)  
 특정 @observable state에 변경이 발생하면 해당 state를 @observer 하고 있는 컴포넌트가 렌더링 됨. 
 
-* 6-5강
-React와 MobX를 통한 UI구성 패키지 
+* 4) React와 MobX를 통한 UI구성 패키지 
 Container : rect component로 구성하며 store와 react component를 연결하는 역할 
 View : 순수 rect component 로 구성하며 container에 포함됨
 Repository  ( or api) : 서버와 통신을 담당하는 클래스로 구성
