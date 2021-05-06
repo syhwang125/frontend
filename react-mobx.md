@@ -41,7 +41,7 @@ ReactDOM.render()
    react.createElement()함수 대신 XML형식의 코드로 구현 가능 
 
 // JSX
-ReactDOM.render(<h1 className=‘heading’>Hello</h1>, document.getElementById(‘content’) 
+ReactDOM.render(<h5 className=‘heading’>Hello</h5>, document.getElementById(‘content’) 
 // Javascript 
 ReactDom.render( React.createElement(‘h1’, { className: ‘heading’}, ‘Hello World’ ) ) 
 
@@ -75,7 +75,7 @@ HTML요소 : 소문자로 구분 <h2/>.
   - Function 기반의 컴포넌트는 상태가 없는 stateless 임 
    
   
-## 4. React Component - props 실습 
+## 5. React Component - props 실습 
 1) props exam 
  생성 (react-props-exam).  App - books - BookList -> BookListItem 
  
@@ -99,7 +99,7 @@ $ yarn start           -> http://localhost:3000/
 
 
 
-## 5. React Component - State 이해 및 실습 
+## 6. React Component - State 이해 및 실습 
 * 1) State 이해 
    state 초기화는 constructor()에서 정의되며, super();        // super생성자를 호출해야 this를 사용할 수 있음
    setState()를 통해 state값을 변경할 수 있음 
@@ -130,7 +130,7 @@ $cd react-state-template
 $yarn 				// 설치 
 $yarn start 
 
-## 6. React Component Lifecycle 
+## 7. React Component Lifecycle 
 1)Mounting : constructor() 에서는 state객체 초기화, 특정 메소드 바인딩 
               componentDidMount() 마운트된 직후 호출되며 데이터 로딩 등의 작업   
               getDerivedStateFromProps() : 상위컴포넌트로부터 받은 props와  이전props값을 비교. //동기화 
@@ -141,8 +141,8 @@ $yarn start
 $npm install --s axios       // server 와 http 프로토콜 통신 
 $yarn start 
 
-## 7. Mobx 
-*1) Mobx- Flux 이해 
+## 8. Mobx 
+* 1) Mobx- Flux 이해 
 Mobx : React 컴포넌트 상태 관리 컨테이너 
 FLux : 상태관리 컨테이너의 기반
 
@@ -155,7 +155,7 @@ Store (view 각각의 state는 store를 이용해 통합 관리, store데이터�
 
 Mobx, Mobx-react 라이브러리 필요 
 
-**6-3강.
+* 6-3강.
 $react-counter-mobx> yarn 
 $yarn start 
 
@@ -165,7 +165,7 @@ constructor (){
         makeObservable(this);       //mobx5 버전이후 mobx6에서는 반드시 정의해야, 데이터 변경시 반영됨. 
  }
 
-**6-4강.
+* 6-4강.
 @action : 관찰대상 데이터, 즉 observable state 의 값을 변경하는 메소드에 적용
 @computed : 성능때문에 사용. get 메소드에 일반적으로 적용하거나 model 객체간 전환 시점에 적용함 
                         관찰가능한 데이터를 연산하는 get 메소드에서 사용함. 캐슁됨. 
@@ -179,7 +179,7 @@ constructor (){
 TodoListComponent (@observer).  -> action call -> TodoListStore(@observable)  
 특정 @observable state에 변경이 발생하면 해당 state를 @observer 하고 있는 컴포넌트가 렌더링 됨. 
 
-**6-5강
+* 6-5강
 React와 MobX를 통한 UI구성 패키지 
 Container : rect component로 구성하며 store와 react component를 연결하는 역할 
 View : 순수 rect component 로 구성하며 container에 포함됨
@@ -188,4 +188,4 @@ Store : 전역 state를 관리하는 store 클래스로 구성
 Model : 서버의 model 과 view model 의 전환을 담당 
 
 
-*7. Reactor - Router 
+## 9. Reactor - Router 
