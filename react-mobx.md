@@ -131,13 +131,24 @@ $yarn 				// 설치
 $yarn start 
 
 ## 7. React Component Lifecycle 
-1)Mounting : constructor() 에서는 state객체 초기화, 특정 메소드 바인딩 
-              componentDidMount() 마운트된 직후 호출되며 데이터 로딩 등의 작업   
-              getDerivedStateFromProps() : 상위컴포넌트로부터 받은 props와  이전props값을 비교. //동기화 
+1)Mounting 단계에서 주요 작업
+  -constructor() 에서는 state객체 초기화, 특정 메소드 바인딩하는 작업을 진행함 
+    바인딩 방법 : 생성자에서 this.onButtonClick.bind(this); 
+              <SearchBar onSearchTitle = { this.onSearchTitle.bind(this) } />
+             arrow function의 경우 bind 정의는 불필요   () => {}
+             auto-bind라이브러리 활용 autobind(this);
+  -componentDidMount() 컴포넌트가 마운트된 직후 호출되며 데이터 로딩 등의 작업   
+  -getDerivedStateFromProps() : 상위컴포넌트로부터 받은 props와  이전props값을 비교. //동기화 
+          
 2)Updating 
-          shouldComponentUpdate () : props 이전값과 달라서 렌더링이 필요하면 return true, 불필요하면 false
+  shouldComponentUpdate () : props 이전값과 달라서 렌더링이 필요하면 return true, 불필요하면 false
+  render()
+  componentDidUpdate() 
+  
 3)UnMounting: 
-
+   ComponentWillUnmount()
+   
+json placeholder https://jsonplaceholder.typicode.com/ 
 $npm install --s axios       // server 와 http 프로토콜 통신 
 $yarn start 
 
