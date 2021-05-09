@@ -1,5 +1,6 @@
 
 #1. Typescript 란 
+* 1) 개요
 기존 javascript 에 Type System을 적용한 것 ( Typescript = javascript + type system )
 typescript로 작성된 코드는 typescript컴파일러(tsc)를 통해 javascript로 변환, 실행됨 
 Types - Primitives Type (number, string, boolean, symbol, void, null, undefined) , Object Types (functions, classes, arrays) 
@@ -35,3 +36,11 @@ $package.json 파일에서 추가하면 index.js 파일 자동 실행됨
     "start": "concurrently npm:start:*"
 
 $npm start 
+
+# 3. todo list 개발 
+*1) Data Model 정의
+   todoItem ( id, task, complete, printDetails ) 
+   
+   
+   
+   
