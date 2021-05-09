@@ -199,15 +199,38 @@ constructor (){
 
 @autorun 는 @observable데이터를 변경될때마다 특정 작업을 지정할때 사용함 
 
+
 TodoListComponent (@observer).  -> action call -> TodoListStore(@observable)  
 특정 @observable state에 변경이 발생하면 해당 state를 @observer 하고 있는 컴포넌트가 렌더링 됨. 
 
-* 4) React와 MobX를 통한 UI구성 패키지 
-Container : rect component로 구성하며 store와 react component를 연결하는 역할 
-View : 순수 rect component 로 구성하며 container에 포함됨
-Repository  ( or api) : 서버와 통신을 담당하는 클래스로 구성
-Store : 전역 state를 관리하는 store 클래스로 구성
-Model : 서버의 model 과 view model 의 전환을 담당 
+- mobx 대표적 API : 
+  @action @observable API, computed from 'mobx' 라이브러리  (store객체에서 사용됨)
+  @inject @observer API, provider 컴포넌트 from 'mobx-react'라이브러리 (react component에서 사용됨)
+  
+@computed : observable 변수의 연산을 할때 성능을 목적으로 사용되는 데코레이터 (캐쉬에 저장됨) 
+@inject : store객체를 react component에 주입해 주며, 다수의 store를 둘 수 있다. @action을 붙혀줘야 transaction개념으로 한번만 렌더링됨 (예, userStore, productStore 등 생성)
+  inject로 주입된 객체들은 props를 통해 꺼내서 사용됨. store들은 provider를 통해 제공되어야 inject 할 수 있음 
+  index.js 에서 
+   <Provider counterStore = { CounterStore}>
+      <App />
+   </Provider>,
+@observer : react componenet mode에 적용. mobx의 autorun
+            observable data가 변경될때 수행하는 API가 @autorun 임. autorun을 이용해서 render() 됨
 
 
-## 9. Reactor - Router 
+## 9. to-do list 실습
+* 1) React와 MobX를 통한 UI구성 패키지 
+   Container : rect component로 구성하며 store와 react component를 연결하는 역할 
+   View : 순수 rect component 로 구성하며 container에 포함됨
+   Repository  ( or api) : 서버와 통신을 담당하는 클래스로 구성
+   Store : 전역 state를 관리하는 store 클래스로 구성
+   Model : 서버로부터 데이터가 view에 보여지는 데이터와 다를 수 있기 때문에 서버의 model과 view model 의 전환을 담당 
+
+* 2) Mobx 적용
+    store 는 @action메소드를 포함하여 메소드 호출을 통해 state를 제어함. state데이터 변경이 일어나면 해당state와 연결된 컴포넌트는 다시 렌더링됨
+    container로 정의한 컴포넌트의 state는 store를 통해 관리함. 
+    api 서버와 통신을 담당하며 axios.js 와 같은 서브파티 라이브러리르 사용함
+   TodoListView (@observer, props를 통해 받음) - TodoListContainer (@inject, @observer) --> TodoStore (@observable, @action, @computed)  <--> TodoApi  <--> Server 
+
+
+## 10. Reactor - Router 
