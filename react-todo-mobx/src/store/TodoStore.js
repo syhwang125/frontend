@@ -15,8 +15,8 @@ class TodoStore {
     _todos = [];
 
     @observable
-    _searchText = '';
-    
+    _searchText = ''; 
+
     get todo() {
         return this._todo;
     }
