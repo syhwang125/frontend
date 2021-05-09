@@ -5,7 +5,9 @@ import BookListItem from './BookListItem';
 class BookList extends Component {
     render() {
         // const books = this.props.books;
-        const { books } = this.props; 
+        const { books } = this.props;   //ES6 
+
+        // 반복문 배열 선언 
         const bookItems = books.map( book => {
             return (
                 <ListItem key={book.ISBN}>
@@ -19,7 +21,8 @@ class BookList extends Component {
             <List>
                 {bookItems}
 
-                <ListItem>
+
+                {/* <ListItem>
                     <BookListItem book={books[0]} />
                     {books[0].title}
                 </ListItem>
@@ -28,7 +31,8 @@ class BookList extends Component {
                 </ListItem>
                 <ListItem>
                     {books[2].title}
-                </ListItem>
+                </ListItem>  */}
+
             </List> 
             </Container>
         )

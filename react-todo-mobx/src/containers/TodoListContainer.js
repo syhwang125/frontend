@@ -16,6 +16,7 @@ class TodoListContainer extends Component {
   render(){
 
     // const { todos } = this.props.todoStore;
+    // searchText는 변경할 데이터이므로 const -> let 으로 변경 
     let { todos, searchText } = this.props.todoStore;
 
     todos = todos.filter( (todo) => todo.title.toLowerCase().indexOf(searchText.toLowerCase()) !== -1);

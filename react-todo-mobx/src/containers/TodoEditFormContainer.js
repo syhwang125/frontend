@@ -16,7 +16,7 @@ class TodoEditFormContainer extends Component {
 
   onAddTodo() {
     let { todo } = this.props.todoStore;
-    todo = { ...todo, id: generateId(5)}
+    todo = { ...todo, id: generateId(5)}    //전개연산자 
     this.props.todoStore.addTodo(todo);
   }
 

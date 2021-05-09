@@ -9,15 +9,19 @@ class TodoStore {
     @observable 
     _todo = {
        // title : 'test', 
-    }   // id, title, date 
+    };  // id, title, date 
 
     @observable
     _todos = [];
 
+    @observable
+    _searchText = '';
+    
     get todo() {
         return this._todo;
     }
 
+    @computed
     get todos() {
         return this._todos ? this._todos.slice() : [];
         // return toJS(this._todos);
@@ -30,7 +34,7 @@ class TodoStore {
     @action
     setTodoProps(name, value) {
         this._todo = {
-            ...this._todo,    // ... 전개 연산자로 전체 객체르르 그대로 넘겨줌 
+            ...this._todo,    // ... 전개 연산자로 전체 객체를 그대로 넘겨줌 
             [name] : value
         }
     }
@@ -56,7 +60,7 @@ class TodoStore {
         foundTodo.title = this._todo.title;
         foundTodo.date = this._todo.date;
 
-        this._todo = {};
+        this._todo = {};   // 위의  title, date clear 
     }
 
 

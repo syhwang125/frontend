@@ -4,7 +4,7 @@ import { Box, Button } from '@material-ui/core';
 class Counter extends Component {
 
     constructor() {
-        super();
+        super();        // super생성자를 호출해야 this를 사용할 수 있음
         this.state = {
             count : 5,      //state value initailize
         }
