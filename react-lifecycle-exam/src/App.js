@@ -4,11 +4,13 @@ import UserList from './UserList';
 
 function App() {
 
-    return(
-          <div className="App">
-            <UserList title='UserList'/> 
-          </div>
-    );
-  }
+    render() {
+        return(
+            <div>
+                <UserList/>
+            </div>
+          );
+       }
+    }
 
 export default App;
