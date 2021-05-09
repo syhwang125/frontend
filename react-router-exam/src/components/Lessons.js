@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Grid, List, ListItem } from '@material-ui/core';
 import lessonsData from '../static-data/lessonsData';
 import { NavLink, Route } from 'react-router-dom';
-import Lesson from './Lessons.js';
+import Lesson from './Lessons';
 
 class Lessons extends Component {
 

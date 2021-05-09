@@ -11,11 +11,13 @@ class App extends Component {
     return (
       <div className="App">
         <Nav />
-        <Switch>
-        <Route exact path='/' component={Main} />
-        <Route path='/about' component={About} />
-        <Route path='/lessons' component={Lessons} />
-        <Route component={ () => <h2>Not Found</h2> }/>
+        <Switch>        
+          {/* exact 정확히 url 이 일치했을때  */}
+          <Route exact path='/' component={Main} />    
+          <Route path='/about' component={About} />
+          <Route path='/lessons' component={Lessons} />
+          <Route component={ () => <h2>Not Found</h2> }/>   
+          {/*  switch 문으로 route를 묶으면 예외케이스 등을 추가  */}
         </Switch>
         
       </div>
