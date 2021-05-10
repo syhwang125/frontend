@@ -119,5 +119,14 @@ answers["complete"] as number[];   // as 는 typescript 의 assertion
     $tsc    컴파일
     $node build/index.js   실행 
     
-     
+#7. Interface 
+*1) Interface 개요
+    인터페이스는 여러 타입의 속성으로 이루어진 새로운 타입을 정의하는 방법 
+    변수, 함수, 클래스에 타입을 지정할 수 있다.                                                                                                                                   interface Shape {
+       p1 : number[],
+       p2 : number[]
+     }
+    let rectange : shape = {}
   
+*2) duck typing 
+   특정 인터페이스에서 정의한 프로퍼티나 메소드를 갖고 있는 클래스는 해당 인터페이스를 구현 한 것
