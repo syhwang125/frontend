@@ -103,5 +103,21 @@ $npm start
     $node build/index.js      //실행 (또는 $npm start) 
     
     
-
+answers["complete"] as number[];   // as 는 typescript 의 assertion   
    
+#6. sorting 
+*1) union type 
+   | 연산자를 이용해서 정의함 
+   각 타입이 갖는 고유멤버는 사용할 수 없음. 
+   Shape : any - Line, Rectangle 의 공통 멤버들 color(), drawing() 만 사용할 수 있음.  
+*2) 타입 가드(Type Guard)
+  특정영역에서 해당 변수의 타입을 한정시켜 주는 기능 
+  타입가드는  사용자가 정의하거나 
+           number, string, boolean, Symbol의 경우 typeof의 연산자를 이용함
+  
+ *3) NamooSorter 실습
+    $tsc    컴파일
+    $node build/index.js   실행 
+    
+     
+  
