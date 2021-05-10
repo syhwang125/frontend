@@ -41,6 +41,67 @@ $npm start
 *1) Data Model 정의
    todoItem ( id, task, complete, printDetails ) 
    
+   접근지정자  : private, public, protected 
    
+*2) 합수
+선언적 함수 
+  function add(n1: number, n2:number) : number {
+      return n1+n2;
+  }
+익명 함수
+  const add = function(n1:number, n2:number) : number {
+    return n1+n2;
+  }
+람다 함수 
+  const add:(n1:number, n2:number) => number = (n1:number, n2:number) : number => {
+     return n1+n2;
+  }
+  
+ Typescript에서는 가변인자를 허용하지 않음. 함수 오버로딩을 통해 가변인자와 같은 효과 
+ 
+ *3) todo list project practice 
+  tsconfig.json 파일에서     "target": "es6",    로 설정 변경 
    
+   // input param 의 타입과 return type 을 정의함 
+   markComplete(id : number , complete:boolean) : void  { } 
+   // 함수의 반환값이 없을 경우 void 타입의 반환을 정의함 (undefined, null 값만 대입 가능)
+   // 함수의 반환값으로 정의가능한 never 타입은 절대 발생하지 않는 값의 타입을 나타냄 
+
+*4) 실행
+/javascript/todo-proj/src/index.ts, TodoItem.ts, data.ts 등 구현 
+todo-proj>npm start 
+$npm start 
+
+#4. Generics 
+*1) 제너릭 (Generic) 
+   재사용 가능한 클래스, 함수를 만들기 위해 다양한 타입에서 사용가능하도록 하는 것 
+   제너릭이 적용된 대상(클래스, 함수, 인터페이스) 선언 시점이 아닌 생성 시점에 사용하는 타입을 결정함. 
+   
+*2) Type alias 
+   export type ItemCounts = {
+    total : number;
+    incomplete : number;
+   }
+   
+*3) inquirer 설치 
+  $npm i inquirer @types/inquirer 
+  
+*4) 실행
+  $npm start. 또는  $node build/index.js 
+  
+*5)enum type 
+   상수관리하기 위한 객체로 상수의 집합을 정의함. 열거형 타입은 숫자, 문자열만 허용 
+   export enum Commands {
+       Quit = "Quit",
+       Add = "Add",
+       Toggle="Show/Hide",
+   }
+
+#5. Todo list 개발
+*1) add, remove, complete, show/hide 실행
+    $tsc       //컴파일
+    $node build/index.js      //실행 (또는 $npm start) 
+    
+    
+
    
