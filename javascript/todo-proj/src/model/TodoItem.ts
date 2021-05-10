@@ -1,12 +1,11 @@
 class TodoItem {
-    // id : number;        // private, public, protected 
+    // id : number;        // private, public, protected 접근지정자 
     // task : string;
     // complete : boolean;
 
-    constructor( 
-        public id : number, 
-        public task : string, 
-        public complete : boolean = false
+    constructor( public id : number, 
+                 public task : string, 
+                 public complete : boolean = false
     ) {
         this.id = id;
         this.task = task;

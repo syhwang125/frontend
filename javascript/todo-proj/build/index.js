@@ -3,16 +3,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const TodoItem_1 = __importDefault(require("./TodoItem"));
-const data_1 = require("./data");
-const TodoCollection_1 = __importDefault(require("./TodoCollection"));
-const sampleTodos = data_1.data.map((item) => new TodoItem_1.default(item.id, item.task, item.complete));
-const myTodoCollection = new TodoCollection_1.default("my todo list ", sampleTodos);
-myTodoCollection.addTodo("java script ");
-myTodoCollection.addTodo("studying ");
-myTodoCollection.markComplete(3, true);
-console.log(`${myTodoCollection.userName}`);
-myTodoCollection.todoItems.forEach((item) => item.printDetails());
+const TodoConsole_1 = __importDefault(require("./view/TodoConsole"));
+// const sampleTodos : TodoItem[] = data.map(
+//     (item) => new TodoItem(item.id, item.task, item.complete)
+// );
+// const myTodoCollection = new TodoCollection("my todo list ", sampleTodos);
+const todoConsole = new TodoConsole_1.default();
+todoConsole.promptUser();
+// myTodoCollection.addTodo("java script ");
+// myTodoCollection.addTodo("studying ");
+// myTodoCollection.markComplete(3, true);
+// console.log(`${myTodoCollection.userName}`);
+// myTodoCollection.removeComplete();
+// myTodoCollection.todoItems.forEach((item) => item.printDetails());
+// console.log( '============ '); 
+// myTodoCollection.getTodoItems(true).forEach((item) => item.printDetails());
+// console.log( '============ '); 
+// myTodoCollection.getTodoItems(false).forEach((item) => item.printDetails());
 // class TodoItem {
 //     constructor(id, task, complete) {
 //         this.id = id;
@@ -24,6 +31,11 @@ myTodoCollection.todoItems.forEach((item) => item.printDetails());
 //         );
 //     }
 // }
+// data.ts 로 데이터 분리함 
+// const data = [
+//     { id:1, task:"장보기", complete : true} ,
+//     { id:2, task:"학습하기", complete : false} ,
+// ];
 // let todoItem = new TodoItem(data[0].id, data[0].task, data[0].complete);
 // console.log(todoItem);
 // for ( let i = 0; i < data.length; i++) {

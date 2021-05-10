@@ -1,20 +1,33 @@
-import TodoItem from "./TodoItem";
+import TodoItem from "./model/TodoItem";
 import { data } from "./data";
-import TodoCollection from "./TodoCollection";
+import TodoCollection from "./service/TodoCollection";
+import TodoConsole from "./view/TodoConsole";
 
-const sampleTodos : TodoItem[] = data.map(
-    (item) => new TodoItem(item.id, item.task, item.complete)
-);
+// const sampleTodos : TodoItem[] = data.map(
+//     (item) => new TodoItem(item.id, item.task, item.complete)
+// );
 
-const myTodoCollection = new TodoCollection("my todo list ", sampleTodos);
+// const myTodoCollection = new TodoCollection("my todo list ", sampleTodos);
 
-myTodoCollection.addTodo("java script ");
-myTodoCollection.addTodo("studying ");
+const todoConsole = new TodoConsole();
+todoConsole.promptUser();
 
-myTodoCollection.markComplete(3, true);
 
-console.log(`${myTodoCollection.userName}`);
-myTodoCollection.todoItems.forEach((item) => item.printDetails());
+// myTodoCollection.addTodo("java script ");
+// myTodoCollection.addTodo("studying ");
+
+// myTodoCollection.markComplete(3, true);
+
+// console.log(`${myTodoCollection.userName}`);
+
+// myTodoCollection.removeComplete();
+
+// myTodoCollection.todoItems.forEach((item) => item.printDetails());
+// console.log( '============ '); 
+// myTodoCollection.getTodoItems(true).forEach((item) => item.printDetails());
+// console.log( '============ '); 
+// myTodoCollection.getTodoItems(false).forEach((item) => item.printDetails());
+
 
 // class TodoItem {
 //     constructor(id, task, complete) {
@@ -29,6 +42,11 @@ myTodoCollection.todoItems.forEach((item) => item.printDetails());
 //     }
 // }
 
+// data.ts 로 데이터 분리함 
+// const data = [
+//     { id:1, task:"장보기", complete : true} ,
+//     { id:2, task:"학습하기", complete : false} ,
+// ];
 
 // let todoItem = new TodoItem(data[0].id, data[0].task, data[0].complete);
 // console.log(todoItem);
