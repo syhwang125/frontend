@@ -234,3 +234,10 @@ TodoListComponent (@observer).  -> action call -> TodoListStore(@observable)
 
 
 ## 10. Reactor - Router 
+https://reactrouter.com/web/api/BrowserRouter 
+SPA 는 최초 url 을 client 가 request 하면 서버에서 index.html로 응답을 하고, 이후 데이터만 보내줌. refresh 할 경우 index.html 로 가기 때문에 router 기능이 필요
+react-router 컴포는트에는 <browserRoubter>, <Router>, <link>, <Switch> 등이 있음 
+  import { BrowserRouter, Route, Switch, NavLink } from 'react-router-dom';
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
