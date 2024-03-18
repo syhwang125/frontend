@@ -21,7 +21,6 @@ class BookList extends Component {
             <List>
                 {bookItems}
 
-
                 {/* <ListItem>
                     <BookListItem book={books[0]} />
                     {books[0].title}
